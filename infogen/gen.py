@@ -9,7 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 from html2bbcode.parser import HTML2BBCode
 
-__version__ = "0.4.8"
+__version__ = "0.5.2"
 __author__ = "Rhilip"
 
 support_list = [
@@ -27,8 +27,7 @@ douban_apikey_list = [
     "02646d3fb69a52ff072d47bf23cef8fd",
     "0b2bdeda43b5688921839c8ecb20399b",
     "0dad551ec0f84ed02907ff5c42e8ec70",
-    "0df993c66c0c636e29ecbb5344252a4a",
-    "07c78782db00a121175696889101e363"
+    "0df993c66c0c636e29ecbb5344252a4a"
 ]
 
 headers = {
@@ -239,7 +238,7 @@ class Gen(object):
 
         # -*- 组合数据 -*-
         descr = ""
-        descr += "[img]{}[img]\n\n".format(data['poster']) if data['poster'] else ""
+        descr += "[img]{}[/img]\n\n".format(data['poster']) if data['poster'] else ""
         descr += "◎译　　名　{}\n".format(" / ".join(data['trans_title'])) if data['trans_title'] else ""
         descr += "◎片　　名　{}\n".format(" / ".join(data['this_title'])) if data['this_title'] else ""
         descr += "◎年　　代　{}\n".format(data['year']) if data.get('year') else ""
@@ -413,7 +412,7 @@ class Gen(object):
 
         # 请求第三方中文名信息
         try:  # Thanks @Deparsoul with his Database
-            steamcn_json = get_page("https://steamdb.steamcn.com/app/{}/data.js?v=38".format(self.sid), jsonp_=True)
+            steamcn_json = get_page("https://steamdb.keylol.com/app/{}/data.js?v=38".format(self.sid), jsonp_=True)
         except Exception:
             pass
         else:
@@ -608,7 +607,7 @@ class Gen(object):
 
         # 生成bbcode
         descr = ""
-        descr += "[img]{}[img]\n\n".format(data['cover']) if data.get('cover') else ""
+        descr += "[img]{}[/img]\n\n".format(data['cover']) if data.get('cover') else ""
         descr += "【基本信息】\n\n"
         descr += "中文名称：{}\n".format(data['chinese_title']) if data.get('chinese_title') else ""
         descr += "英文名称：{}\n".format(data['english_title']) if data.get('english_title') else ""

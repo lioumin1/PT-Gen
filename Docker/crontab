@@ -1,0 +1,1 @@
+*/10 * * * * cd /app && /usr/local/bin/flask update_infogen
